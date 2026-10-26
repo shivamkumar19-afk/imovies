@@ -2,6 +2,10 @@
 
 A full-stack MERN web app for booking movie tickets. Users browse movies, pick a date and showtime, choose exact seats on a live seat map and manage their bookings. Admins manage movies, theatres, shows and see all bookings.
 
+**Live demo:** [imovies-mvd0.onrender.com](https://imovies-mvd0.onrender.com) · **API:** [imovies-api-f3bg.onrender.com/api/health](https://imovies-api-f3bg.onrender.com/api/health)
+
+> Hosted on Render's free plan. If the site has been idle, the first load can take up to a minute while the server wakes up.
+
 ![IMovies home page](docs/screenshots/home-light.png)
 
 ---
@@ -64,7 +68,7 @@ A full-stack MERN web app for booking movie tickets. Users browse movies, pick a
 | Database | MongoDB (Atlas or local) with Mongoose 9 |
 | Auth | JSON Web Tokens, bcryptjs |
 | API testing | Postman collection + Node test runner |
-| Deployment | MongoDB Atlas, Render (API), Vercel (frontend) |
+| Deployment | MongoDB Atlas, Render (API and static frontend) |
 
 ```
 React (Vite + Bootstrap)  ── HTTP/JSON (Axios + JWT) ──>  Express API  ──>  MongoDB
@@ -164,7 +168,7 @@ node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 
 | Variable | Example | Description |
 |---|---|---|
-| `VITE_API_URL` | `https://imovies-api.onrender.com/api` | Base URL of the deployed API. Leave empty in development |
+| `VITE_API_URL` | `https://imovies-api-f3bg.onrender.com/api` | Base URL of the deployed API. Leave empty in development |
 
 ## Demo accounts
 
@@ -289,6 +293,14 @@ The suite covers sign-up and login, admin-only routes, search and filters, show 
 
 ## Deployment
 
+The live version runs at:
+
+| Part | URL |
+|---|---|
+| Frontend (Render Static Site) | https://imovies-mvd0.onrender.com |
+| Backend API (Render Web Service) | https://imovies-api-f3bg.onrender.com |
+| Database | MongoDB Atlas (M0 cluster) |
+
 ### 1. Database – MongoDB Atlas
 1. Create a free **M0** cluster.
 2. **Database Access**: add a user with `readWrite` on the `imovies` database.
@@ -302,7 +314,14 @@ The suite covers sign-up and login, admin-only routes, search and filters, show 
 
 The free plan sleeps after 15 minutes without traffic; the first request after that takes about a minute.
 
-### 3. Frontend – Vercel
+### 3. Frontend – Render Static Site (used for the live demo)
+1. **New → Static Site**, pick this repository and set **Root Directory** to `client`.
+2. Build command `npm install && npm run build`, publish directory `dist`.
+3. Environment variable `VITE_API_URL` = `https://<your-api>.onrender.com/api`.
+4. **Redirects/Rewrites**: source `/*`, destination `/index.html`, action **Rewrite**.
+5. Put the static site URL into `CLIENT_URL` on the backend (comma-separate several origins, e.g. `https://<your-site>.onrender.com,http://localhost:5173`).
+
+### Alternative frontend host – Vercel
 1. **Add New → Project**, import this repository and set **Root Directory** to `client`.
 2. Framework preset **Vite** (build `npm run build`, output `dist`).
 3. Environment variable `VITE_API_URL` = `https://<your-api>.onrender.com/api`.
