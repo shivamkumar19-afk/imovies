@@ -23,6 +23,7 @@ A full-stack MERN web app for booking movie tickets. Users browse movies, pick a
 13. [Deployment](#deployment)
 14. [Design decisions](#design-decisions)
 15. [Known limitations and future work](#known-limitations-and-future-work)
+16. [Project documentation](#project-documentation)
 
 ---
 
@@ -326,6 +327,18 @@ The free plan sleeps after 15 minutes without traffic; the first request after t
 - The JWT is stored in `localStorage`; an httpOnly cookie would be safer against XSS.
 - No rate limiting on login yet.
 - The admin bookings list shows the latest 200 (no pagination).
+
+## Project documentation
+
+Phase-wise project documents are in [`docs/project-documentation/`](docs/project-documentation):
+
+| Phase | Documents |
+|---|---|
+| 1. Ideation | [Problem Statements](docs/project-documentation/1-ideation-phase/The_IMovies_Problem_Statements.docx) · [Empathy Map](docs/project-documentation/1-ideation-phase/The_IMovies_Empathy_Map.docx) · [Brainstorm & Idea Prioritization](docs/project-documentation/1-ideation-phase/The_IMovies_Brainstorm_and_Idea_Prioritization.docx) |
+| 2. Project planning | [Project Planning (backlog, sprints, burndown)](docs/project-documentation/2-project-planning-phase/The_IMovies_Project_Planning.docx) |
+| 3. Requirement analysis | [Solution Requirements](docs/project-documentation/3-requirement-analysis/The_IMovies_Solution_Requirements.docx) · [Data Flow Diagram & User Stories](docs/project-documentation/3-requirement-analysis/The_IMovies_Data_Flow_Diagram.docx) · [Technology Stack](docs/project-documentation/3-requirement-analysis/The_IMovies_Technology_Stack.docx) |
+| 4. Project design | [Problem–Solution Fit](docs/project-documentation/4-project-design-phase/The_IMovies_Problem_Solution_Fit.docx) · [Proposed Solution](docs/project-documentation/4-project-design-phase/The_IMovies_Proposed_Solution.docx) · [Solution Architecture](docs/project-documentation/4-project-design-phase/The_IMovies_Solution_Architecture.docx) |
+| 5. Performance testing | [User Acceptance Testing plan](docs/project-documentation/5-performance-testing/The_IMovies_UAT_Plan.docx) |
 
 ---
 
